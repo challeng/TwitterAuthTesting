@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :twitter_id
   
   def self.find_for_twitter_oauth(access_token, signed_in_resource=nil)
-    p access_token.extra.raw_info.keys
     data = access_token.extra.raw_info
     if user = User.where(:email => data.email).first
       user
